@@ -1,4 +1,4 @@
-# PayTM_MERN_Stack
+# ypaytm
 
 ## Overview
 
