@@ -8,20 +8,20 @@ import { useNavigate } from "react-router-dom"
 export const Dashboard = () => {
     const navigate = useNavigate();
     const [balance, setBalance] = useState(0);
-    if(!localStorage.getItem("token")){
-        return <div>
-            <button onClick={() => {
-                navigate("/signin")
-            }}>Session-id expired please click here to signin</button>
-        </div>
-    }
+
     useEffect(() => {
+        if(!localStorage.getItem("token")){
+            navigate("/signin")
+            return
+        }
         axios.get("http://localhost:3000/api/v1/account/balance", {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token")
             }
         }).then(response => setBalance(response.data.balance))
-    }, [balance])
+    }, [])
+
+    if(!localStorage.getItem("token")) return null
 
     return <div>
         <Appbar />
@@ -29,7 +29,6 @@ export const Dashboard = () => {
             <Balance value={balance} />
             <Users />
         </div>
-        <logout />
     </div>
 }
 

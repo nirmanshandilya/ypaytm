@@ -76,7 +76,7 @@
 ### 1️⃣ Clone the repo
 
 ```bash
-git clone https://github.com/Mayur-Shiwal/ypaytm.git
+git clone https://github.com/nirmanshandilya/ypaytm.git
 cd ypaytm
 ```
 
